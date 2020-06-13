@@ -1,12 +1,10 @@
-h1 {
-    text-align: center;
-    color: chartreuse;
-}
-
 body {
     background: beige;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* login page styling */
 
 .login {
     display: flex;
@@ -49,4 +47,35 @@ body {
     margin: 1rem auto;
     color: black;
     background-color: whitesmoke;
+}
+
+
+/* create customer page styling */
+
+.create-customer {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: black;
+    color: white;
+    padding: 0 15rem;
+}
+
+.create-customer>h1 {
+    color: blue;
+}
+
+.create-customer>div>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background: yellow;
+    color: black;
+    padding: 1rem 2rem 1rem
+}
+
+.create-customer>div>div>span {
+    padding-right: 1rem;
 }
