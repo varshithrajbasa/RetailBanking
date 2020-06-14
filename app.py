@@ -23,6 +23,22 @@ def login():
  
     return render_template('login.html', message=message)
 
-@app.route('/create_customer')
+@app.route('/create_customer', methods=['post', 'get'])
 def create_customer():
-    return render_template('create_customer.html')
+    message=""
+    if request.method == 'POST':
+        ssn_id=request.form.get('ssn_id')
+        cust_id=request.form.get('cust_id')
+        cname=request.form.get('cname')
+        c_age=request.form.get('c_age')
+        address=request.form.get('address')
+        city=request.form.get('city')
+        state=request.form.get('state')
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO CUSTOMER values(%s,%s,%s,%s,%s,%s,%s)',(ssn_id,cust_id,cname,c_age,address,city,state))
+        results = cur.fetchall()
+        if results:
+            message="Done"
+        else:
+            message = "Error"
+    return render_template('create_customer.html',message=message)
