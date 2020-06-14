@@ -83,3 +83,47 @@ body {
 .create-customer>div>div>span {
     padding-right: 1rem;
 }
+
+.requ {
+    color: red;
+}
+
+.create-customer>.body {
+    align-self: center;
+}
+
+input {
+    width: 100%;
+    padding: 8px 8px;
+    margin: 4px 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+#listBox {
+    width: 100%;
+    padding: 8px 8px;
+    margin: 4px 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+#secondlist {
+    width: 100%;
+    padding: 8px 8px;
+    margin: 4px 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.btn {
+    width: 125px;
+    color: yellow;
+    background: black;
+}
