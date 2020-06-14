@@ -1,6 +1,20 @@
 body {
     background: beige;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+
+footer {
+    background-color: black;
+    margin-top: 4rem;
+    height: 200px;
+    color: yellow;
+}
+
+footer>div {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
 }
 
 
@@ -21,6 +35,11 @@ body {
     padding: 17px;
     margin-top: 0px;
     color: white;
+}
+
+.login>p {
+    text-align: center;
+    color: red;
 }
 
 .login>form {
