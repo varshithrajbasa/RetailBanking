@@ -77,11 +77,30 @@ body {
     justify-content: flex-start;
     background: yellow;
     color: black;
-    padding: 1rem 2rem 1rem
+    /* padding: 1rem 2rem 1rem */
 }
 
-.create-customer>div>div>span {
-    padding-right: 1rem;
+.create-customer>div>div>ul>li {
+    padding-right: 1.5rem;
+    float: left;
+    list-style: none;
+    height: 1rem;
+}
+
+.create-customer>div>div>ul>li>ul {
+    list-style: none;
+    padding: 0px;
+    display: none;
+}
+
+.create-customer>div>div>ul>li>ul>li {
+    padding: 1.5rem 0 1rem 0;
+    background-color: yellow;
+    text-align: center;
+}
+
+.create-customer>div>div>ul>li:hover>ul {
+    display: block;
 }
 
 .requ {
