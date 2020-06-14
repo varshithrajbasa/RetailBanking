@@ -100,7 +100,7 @@ footer>div {
 }
 
 .create-customer>div>div>ul>li {
-    padding-right: 1.5rem;
+    padding-right: 2.5rem;
     float: left;
     list-style: none;
     height: 1rem;
@@ -116,6 +116,7 @@ footer>div {
     padding: 1.5rem 0 1rem 0;
     background-color: yellow;
     text-align: center;
+    position: relative;
 }
 
 .create-customer>div>div>ul>li:hover>ul {
