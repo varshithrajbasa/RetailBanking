@@ -11,6 +11,9 @@
 <body>
     <div class="login">
         <h3>Login</h3>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
         <form action="index.html" method="post">
             <input type="text" placeholder="Enter Username" name="uname" required>
             <input type="password" placeholder="Enter Password" name="password" required>
