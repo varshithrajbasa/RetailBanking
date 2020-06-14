@@ -63,6 +63,10 @@ body {
     padding: 0 15rem;
 }
 
+.header>h1>span {
+    color: yellow;
+}
+
 .create-customer>h1 {
     color: blue;
 }
