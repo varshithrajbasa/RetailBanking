@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request,redirect, url_for
+from flask import Flask, render_template, request,redirect, url_for,session
 from flask_mysqldb import MySQL 
 
 app = Flask(__name__)
-app.secret_key = 'S689Gjysjms0’
+app.secret_key = "S689Gjysjms0"
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'tiger'
@@ -18,7 +18,7 @@ def login():
         cur.execute('SELECT * FROM userstore WHERE login = %s AND password = %s', (username, password,))
         results = cur.fetchall()
         if results:
-            session['username'] = request.form.get('uname')
+            session['username'] = username
             return redirect(url_for('create_customer'))
         else:
             message = "Wrong username or password"
@@ -62,3 +62,13 @@ def update_customer():
     if resultValue > 0:
         userDetails = cur.fetchall()
         return render_template('update_customer.html',userDetails=userDetails)
+@app.route('/update',methods=['post', 'get'])
+def update():
+    id=int(request.form.get('id'))
+    cname=request.form.get('cname')
+    address=request.form.get('address')
+    c_age=int(request.form.get('cage'))
+    cur = mysql.connection.cursor()
+    cur.execute('''UPDATE  customer Set ws_age= %s ,ws_adrs= %s,ws_name= %s where ws_ssn= %s''',(c_age,address,cname,id))
+    mysql.connection.commit()
+    return redirect(url_for('users'))
