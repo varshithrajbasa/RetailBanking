@@ -1,50 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
-    <title>Update Customer</title>
-</head>
-
-<body>
-    <div class="create-customer">
-        <div class="header">
-            <h1><span>FedChoice</span> Bank</h1>
-            <div>
-                <ul>
-                    <li>Home</li>
-                    <li>Customer Management
-                        <ul>
-                            <li>Create Customer</li>
-                            <li>Update Customer</li>
-                            <li>Delete Customer</li>
-                        </ul>
-                    </li>
-                    <li>Account Management
-                        <ul>
-                            <li>Create Customer</li>
-                            <li>Update Customer</li>
-                            <li>Delete Customer</li>
-                        </ul>
-                    </li>
-                    <li>Status Details
-                        <ul>
-                            <li>Customer</li>
-                            <li>Account</li>
-                        </ul>
-                    </li>
-                    <li>Account Operations
-                        <ul>
-                            <li>Create Account</li>
-                            <li>Delete Account</li>
-                        </ul>
-                    </li>
-                    <li>Logout</li>
-                </ul>
-            </div>
-        </div>
+{% extends "layout.html" %}
+   
+    {% block content %}
         <div class="body">
             <h1>Update Customer</h1>
             <br>
@@ -126,22 +82,4 @@
                 </div>
             </form>
         </div>
-    </div>
-    <footer>
-        <div style="background-color: yellow;padding-top:0.5rem;margin-bottom:2rem;"></div>
-        <div>
-            <span>
-                <h2>About Us</h2>
-            </span>
-            <span>
-                <h2>Services</h2>
-            </span>
-            <span>
-                <h2>Contact Us</h2>
-            </span>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+        {% endblock %}
