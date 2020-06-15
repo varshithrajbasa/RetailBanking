@@ -1,73 +1,64 @@
 {% extends "layout.html" %}
    
     {% block content %}
-    <h1>Update Customer</h1>
-    
-        <table>
-            <tr>
-                <td>
-                    <label for="ssn-id">Customer SSN Id</label>
-                </td>
-                <td>
+    <form action="/update" method="post" class="form-horizontal">
+        <h1 style="text-align: center;margin-right: 50%;">Update Customer</h1>
+            <div class="form-group form-inline">
+                <label for="ssn-id" class="control-label col-sm-3" >Customer SSN Id</label>
+                <div class="col-sm-9">
+                    <input name="id" value="{{userDetails[0][0]}}" type="hidden">
                     {{userDetails[0][0]}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="cust_id">Customer Id</label>
-                </td>
-                <td>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label for="cust_id" class="control-label col-sm-3" >Customer Id</label>
+                <div class="col-sm-9">
                     {{userDetails[0][1]}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="cname">Old Customer Name</label>
-                </td>
-                <td>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label for="oname" class="control-label col-sm-3" >Old Customer Name</label>
+                <div class="col-sm-9">
                     {{userDetails[0][2]}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="cname">New Customer Name</label><span class="requ">*</span>
-                </td>
-                <td>
-                    <input type="text" id="cname" name="cname" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="address">Old Address</label><span class="requ">*</span>
-                </td>
-                <td>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label for="cname" class="control-label col-sm-3" >New Customer Name<span class="requ">*</span></label>
+                <div class="col-sm-9">
+                <input type="text" id="cname" class="form_control col-sm-4 input-sm" name="cname" required>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label for="address" class="control-label col-sm-3" >Old Address</label>
+                <div class="col-sm-9">
                     {{userDetails[0][4]}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="address">New Address</label><span class="requ">*</span>
-                </td>
-                <td>
-                    <input type="text" id="address" name="address" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="cage">Old Age</label>
-                </td>
-                <td>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label for="address" class="control-label col-sm-3" >New Address<span class="requ">*</span></label>
+                <div class="col-sm-9">
+                <input type="text" id="address" class="form_control col-sm-4 input-sm"name="address" required>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label for="cage" class="control-label col-sm-3" >Age</label>
+                <div class="col-sm-9">
                     {{userDetails[0][3]}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="cage">New Age</label><span class="requ">*</span>
-                </td>
-                <td>
-                    <input type="text" id="cage" name="cage" required>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label for="cage" class="control-label col-sm-3" >New Age<span class="requ">*</span></label>
+                <div class="col-sm-9">
+                <input type="text" id="cage" class="form_control col-sm-4 input-sm"name="cage" required>
+                </div>
+            </div>
+            
+            <div class="form-group">        
+                <div class="col-sm-offset-2 col-sm-10">
+                    <br>
+                  <button type="submit" class="btn btn-default">Update</button>
+                </div>
+            </div>
+    </form>
 
     {% endblock %}
