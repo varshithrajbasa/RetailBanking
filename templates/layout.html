@@ -47,8 +47,10 @@
                 </ul>
             </div>
         </div>
-        {% block content %}
-    {% endblock %}
+        <div class="content">
+            {% block content %} {% endblock %}
+        </div>
+
     </div>
     <footer>
         <div style="background-color: yellow;padding-top:0.5rem;margin-bottom:2rem;"></div>
@@ -65,4 +67,5 @@
         </div>
     </footer>
 </body>
+
 </html>

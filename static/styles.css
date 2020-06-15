@@ -17,6 +17,10 @@ footer>div {
     flex-direction: row;
 }
 
+.content {
+    min-height: 50vh;
+}
+
 
 /* login page styling */
 
@@ -77,7 +81,7 @@ footer>div {
 }
 
 .header {
-    background: black;
+    background: linear-gradient(to bottom, #808081 -82%, #000000 73%);
     color: white;
     padding: 0 15rem;
 }
