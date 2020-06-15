@@ -1,33 +1,31 @@
-{% extends "layout.html" %}
-   
-    {% block content %}
-<table border = 1>
-   <tr>
-    <th style="text-align:left">SSN ID</th>
-    <th style="text-align:left">CustomerID</th>
-    <th style="text-align:left">Customer Name</th>
-    <th style="text-align:left">Address</th>
-    <th style="text-align:left">City</th>
-    <th style="text-align:left">State</th>
-    <th style="text-align:left">Update</th>
-    <th style="text-align:left">Delete</th>
-  </tr>
+{% extends "layout.html" %} {% block content %}
+<table border=1>
+    <tr>
+        <th style="text-align:left">SSN ID</th>
+        <th style="text-align:left">CustomerID</th>
+        <th style="text-align:left">Customer Name</th>
+        <th style="text-align:left">Address</th>
+        <th style="text-align:left">City</th>
+        <th style="text-align:left">State</th>
+        <th style="text-align:left">Update</th>
+        <th style="text-align:left">Delete</th>
+    </tr>
     {% for user in userDetails %}
     <tr>
-      <td> {{user[0]}} </td>
-      <td> {{user[1]}} </td>
-      <td> {{user[2]}} </td>
-      <td> {{user[4]}} </td>
-      <td> {{user[5]}} </td>
-      <td> {{user[6]}} </td>
-      <td> {{user[7]}} </td>
-       <td><form action="/update_customer" method="post">
-        <input name="id" value="{{user[0]}}" type="hidden">
-        <button name="update" type="submit">Update</button>
-    </form></td>
-      <td>Delete</td>
+        <td> {{user[0]}} </td>
+        <td> {{user[1]}} </td>
+        <td> {{user[2]}} </td>
+        <td> {{user[4]}} </td>
+        <td> {{user[5]}} </td>
+        <td> {{user[6]}} </td>
+        <td>
+            <form action="/update_customer" method="post">
+                <input name="id" value="{{user[0]}}" type="hidden">
+                <button name="update" type="submit">Update</button>
+            </form>
+        </td>
+        <td>Delete</td>
     </tr>
     {% endfor %}
-  </table>
-     {% endblock %}
-  
+</table>
+{% endblock %}
