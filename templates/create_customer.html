@@ -101,7 +101,9 @@
                             <label for="state">State</label><span class="requ">*</span>
                         </td>
                         <td>
-                            <select id="listBox" onchange='selct_district(this.value)'></select>
+                            <select id="listBox" onchange='selct_district(this.value)' name="listBox">
+                                <option vlaue=""></option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
@@ -109,7 +111,7 @@
                             <label for="district">District</label><span class="requ">*</span>
                         </td>
                         <td>
-                            <select id='secondlist'></select>
+                            <select id="secondlist" name="secondlist"></select>
                         </td>
                     </tr>
                 </table>
