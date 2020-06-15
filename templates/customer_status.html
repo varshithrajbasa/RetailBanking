@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block content %}
+<table border=1>
+    <tr>
+        <th style="text-align:left">Customer ID</th>
+        <th style="text-align:left">Customer SSN ID</th>
+        <th style="text-align:left">Status</th>
+        <th style="text-align:left">Message</th>
+        <th style="text-align:left">Last Updated</th>
+        <th style="text-align:left">Operations</th>
+        <th style="text-align:left">View Profile</th>
+    </tr>
+    {% for user in userDetails %}
+    <tr>
+        <td> {{user[0]}} </td>
+        <td> {{user[1]}} </td>
+        <td> {{user[2]}} </td>
+        <td> {{user[4]}} </td>
+        <td> {{user[5]}} </td>
+        <td> {{user[6]}} </td>
+        <td>
+            <form action="/refresh" method="post">
+                <input name="id" value="{{user[0]}}" type="hidden">
+                <button name="refresh" type="submit">Refresh</button>
+            </form>
+        </td>
+        <td>
+            <form action="/view_profile" method="post">
+                <input name="id" value="{{user[0]}}" type="hidden">
+                <button name="view_profile" type="submit">View Profile</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
