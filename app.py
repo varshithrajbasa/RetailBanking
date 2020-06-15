@@ -51,3 +51,10 @@ def create_customer():
         else:
             message = "Error"
     return render_template('create_customer.html',message=message)
+@app.route('/view_customer')
+def users():
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM customer")
+    if resultValue > 0:
+        userDetails = cur.fetchall()
+        return render_template('view_customer.html',userDetails=userDetails)
