@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script language="Javascript" src="{{ url_for('static',filename='jquery.js') }}"></script>
+    <script type="text/JavaScript" src="{{ url_for('static',filename='state.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
+    <title>Create Customer</title>
+</head>
+
+<body>
+    <div class="create-customer">
+        <div class="header">
+            <h1><span>FedChoice</span> Bank</h1>
+            <div>
+                <ul>
+                    <li>Home</li>
+                    <li>Account Details</li>
+                    <li>Account Statement</li>
+                    <li>Logout</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            {% block content %} {% endblock %}
+        </div>
+
+    </div>
+    <footer>
+        <div style="background-color: yellow;padding-top:0.5rem;margin-bottom:2rem;"></div>
+        <div>
+            <span>
+                <h2>About Us</h2>
+            </span>
+            <span>
+                <h2>Services</h2>
+            </span>
+            <span>
+                <h2>Contact Us</h2>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>
