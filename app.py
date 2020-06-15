@@ -58,3 +58,11 @@ def users():
     if resultValue > 0:
         userDetails = cur.fetchall()
         return render_template('view_customer.html',userDetails=userDetails)
+@app.route('/update_customer',methods=['post', 'get'])
+def update_customer():
+    id=int(request.form.get('id'))
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("select * from customer where ws_ssn = %s",(id,))
+    if resultValue > 0:
+        userDetails = cur.fetchall()
+        return render_template('update_customer.html',userDetails=userDetails)

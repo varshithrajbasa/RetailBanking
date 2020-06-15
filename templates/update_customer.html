@@ -1,85 +1,73 @@
 {% extends "layout.html" %}
    
     {% block content %}
-        <div class="body">
-            <h1>Update Customer</h1>
-            <br>
-            <form method="POST" action="update_customer">
-                {% if message %}
-                <p>{{ message }}</p>
-                {% endif %}
+    <h1>Update Customer</h1>
+    
+        <table>
+            <tr>
+                <td>
+                    <label for="ssn-id">Customer SSN Id</label>
+                </td>
+                <td>
+                    {{userDetails[0][0]}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="cust_id">Customer Id</label>
+                </td>
+                <td>
+                    {{userDetails[0][1]}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="cname">Old Customer Name</label>
+                </td>
+                <td>
+                    {{userDetails[0][2]}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="cname">New Customer Name</label><span class="requ">*</span>
+                </td>
+                <td>
+                    <input type="text" id="cname" name="cname" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="address">Old Address</label><span class="requ">*</span>
+                </td>
+                <td>
+                    {{userDetails[0][4]}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="address">New Address</label><span class="requ">*</span>
+                </td>
+                <td>
+                    <input type="text" id="address" name="address" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="cage">Old Age</label>
+                </td>
+                <td>
+                    {{userDetails[0][3]}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="cage">New Age</label><span class="requ">*</span>
+                </td>
+                <td>
+                    <input type="text" id="cage" name="cage" required>
+                </td>
+            </tr>
+        </table>
 
-                <table>
-                    <tr>
-                        <td>
-                            <label for="ssn-id">Customer SSN Id</label>
-                        </td>
-                        <td>
-                            {{ssn-id}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="cust_id">Customer Id</label>
-                        </td>
-                        <td>
-                            {{cust-id}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="cname">Old Customer Name</label>
-                        </td>
-                        <td>
-                            {{cname}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="cname">New Customer Name</label><span class="requ">*</span>
-                        </td>
-                        <td>
-                            <input type="text" id="cname" name="cname" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="address">Old Address</label><span class="requ">*</span>
-                        </td>
-                        <td>
-                            {{address}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="address">New Address</label><span class="requ">*</span>
-                        </td>
-                        <td>
-                            <input type="text" id="address" name="address" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="cage">Old Age</label>
-                        </td>
-                        <td>
-                            {{cage}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="cage">New Age</label><span class="requ">*</span>
-                        </td>
-                        <td>
-                            <input type="text" id="cage" name="cage" required>
-                        </td>
-                    </tr>
-                </table>
-                <span class="requ">(*) fileds are mandatory</span>
-                <br>
-                <div style="display: flex; flex-direction: row; justify-content: center; padding-top: 1rem;">
-                    <input class="btn" type="submit" value="Update">
-                </div>
-            </form>
-        </div>
-        {% endblock %}
+    {% endblock %}
