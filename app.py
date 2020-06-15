@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,redirect, url_for
 from flask_mysqldb import MySQL 
 
 app = Flask(__name__)
+app.secret_key = 'S689Gjysjms0’
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'tiger'
@@ -17,6 +18,7 @@ def login():
         cur.execute('SELECT * FROM userstore WHERE login = %s AND password = %s', (username, password,))
         results = cur.fetchall()
         if results:
+            session['username'] = request.form.get('uname')
             return redirect(url_for('create_customer'))
         else:
             message = "Wrong username or password"
