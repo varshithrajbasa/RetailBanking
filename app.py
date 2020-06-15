@@ -20,6 +20,8 @@ def login():
             return redirect(url_for('create_customer'))
         else:
             message = "Wrong username or password"
+        mysql.connection.commit()
+        cur.close()
  
     return render_template('login.html', message=message)
 
@@ -27,16 +29,23 @@ def login():
 def create_customer():
     message=""
     if request.method == 'POST':
-        ssn_id=request.form.get('ssn_id')
-        cust_id=request.form.get('cust_id')
+        ssn_id=int(request.form.get('ssn-id'))
+        print(ssn_id)
+        cust_id=int(request.form.get('cust-id'))
+        print(cust_id)
         cname=request.form.get('cname')
-        c_age=request.form.get('c_age')
+        print(cname)
+        c_age=int(request.form.get('cage'))
+        print(c_age)
         address=request.form.get('address')
-        city=request.form.get('city')
+        print(address)
+        city=request.form.get('onchange')
+        print(city)
         state=request.form.get('state')
-        cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO CUSTOMER values(%s,%s,%s,%s,%s,%s,%s)',(ssn_id,cust_id,cname,c_age,address,city,state))
-        results = cur.fetchall()
+        print(state)
+        curs = mysql.connection.cursor()
+        curs.execute('''INSERT INTO customer(ws_ssn, ws_cust_id, ws_name, ws_age, ws_adrs, city, state) values(%s, %s, %s, %s, %s, %s, %s)''',(ssn_id,cust_id,cname,c_age,address,city,state))
+        results = curs.fetchall()
         if results:
             message="Done"
         else:
