@@ -21,7 +21,10 @@
       <td> {{user[5]}} </td>
       <td> {{user[6]}} </td>
       <td> {{user[7]}} </td>
-       <td>Update</td>
+       <td><form action="/update_customer" method="post">
+        <input name="id" value="{{user[0]}}" type="hidden">
+        <button name=""update" type="submit">Update</button>
+    </form></td>
       <td>Delete</td>
     </tr>
     {% endfor %}
