@@ -2,6 +2,16 @@
    
     {% block content %}
 <table border = 1>
+   <tr>
+    <th style="text-align:left">SSN ID</th>
+    <th style="text-align:left">CustomerID</th>
+    <th style="text-align:left">Customer Name</th>
+    <th style="text-align:left">Address</th>
+    <th style="text-align:left">City</th>
+    <th style="text-align:left">State</th>
+    <th style="text-align:left">Update</th>
+    <th style="text-align:left">Delete</th>
+  </tr>
     {% for user in userDetails %}
     <tr>
       <td> {{user[0]}} </td>
@@ -11,6 +21,8 @@
       <td> {{user[5]}} </td>
       <td> {{user[6]}} </td>
       <td> {{user[7]}} </td>
+       <td>Update</td>
+      <td>Delete</td>
     </tr>
     {% endfor %}
   </table>
