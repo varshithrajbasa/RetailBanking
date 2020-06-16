@@ -30,8 +30,9 @@ footer>div {
 }
 
 .content {
-    min-height: 50vh;
-    margin-left: 25%;
+    min-height: 450px;
+    min-width: 700px;
+    margin: 0 auto;
 }
 
 
