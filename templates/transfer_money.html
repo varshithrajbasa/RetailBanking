@@ -1,0 +1,29 @@
+<!-- Page to transfer money -->
+
+{% extends "layout2.html" %} {% block content %}
+
+<h1>Transfer Money</h1>
+<form method="POST" action="">
+    <table>
+        <tr>
+            <td>Customer ID:</td>
+            <td>{{}}</td>
+        </tr>
+        <tr>
+            <td>Source Account Type</td>
+            <td>{{}}</td>
+        </tr>
+        <tr>
+            <td>Target Account Type:</td>
+            <td>{{}}</td>
+        </tr>
+        <tr>
+            <td>Transfer Amount:</td>
+            <td><input type="text" id="transfer" name="transfer" required></td>
+        </tr>
+    </table>
+
+    <input class="btn" type="submit" value="Transfer">
+</form>
+
+{% endblock %}
