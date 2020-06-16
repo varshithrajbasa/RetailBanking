@@ -1,0 +1,33 @@
+<!-- Page to withdraw money -->
+
+{% extends "layout2.html" %} {% block content %}
+
+<h1>Deposit Money</h1>
+<form method="POST" action="">
+    <table>
+        <tr>
+            <td>Customer ID:</td>
+            <td>{{}}</td>
+        </tr>
+        <tr>
+            <td>Account ID:</td>
+            <td>{{}}</td>
+        </tr>
+        <tr>
+            <td>Account Type:</td>
+            <td>{{}}</td>
+        </tr>
+        <tr>
+            <td>Balance:</td>
+            <td>{{}}</td>
+        </tr>
+        <tr>
+            <td>Withdraw Amount:</td>
+            <td><input type="text" id="withdraw" name="withdraw" required></td>
+        </tr>
+    </table>
+
+    <input class="btn" type="submit" value="Submit">
+</form>
+
+{% endblock %}
