@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+   
+    {% block content %}
+    <h1><b>Customer Details</b></h1>
+    <div style="margin-right: 25%; background-color: white;">
+<table class="table table-bordered">
+  <thead class="thead-dark">
+  <tr>
+    <th style="text-align:left">SSN ID</th>
+    <th style="text-align:left">CustomerID</th>
+    <th style="text-align:left">Customer Name</th>
+    <th style="text-align:left">Address</th>
+    <th style="text-align:left">City</th>
+    <th style="text-align:left">State</th>
+    <th style="text-align:left">Delete</th>
+  </thead>  
+  </tr>
+    {% for user in userDetails %}
+    <tr>
+      <td> {{user[0]}} </td>
+      <td> {{user[1]}} </td>
+      <td> {{user[2]}} </td>
+      <td> {{user[4]}} </td>
+      <td> {{user[5]}} </td>
+      <td> {{user[6]}} </td>
+    <td><form action="/delete_customer" method="post">
+      <input name="id" value="{{user[0]}}" type="hidden">
+      <button name="Delete" type="submit">Delete</button>
+  </form></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+     {% endblock %}
+  
