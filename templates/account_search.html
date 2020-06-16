@@ -1,0 +1,31 @@
+<!-- Page to search account -->
+
+{% extends "layout.html" %} {% block content %}
+<h1>Account Search</h1>
+
+<form action="" method="post">
+    <table>
+        <tr>
+            <td>
+                <label for="ssn-id">Account Id</label><span class="requ">*</span>
+            </td>
+            <td>
+                <input type="text" id="acc_id" name="acc_id">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">OR</td>
+        </tr>
+        <tr>
+            <td>
+                <label for="cust_id">Enter Customer Id</label><span class="requ">*</span>
+            </td>
+            <td>
+                <input type="text" id="cust-id" name="cust-id">
+            </td>
+        </tr>
+    </table>
+    <button type="submit">View</button>
+</form>
+
+{% endblock %}
