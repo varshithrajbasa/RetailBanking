@@ -1,0 +1,42 @@
+{% extends "layout.html" %} {% block content %}
+
+<h1><b>Delete Account</b></h1>
+<form method="POST" action="delete_account">
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    <table>
+        <tr>
+            <td>
+                <label for="account_id">Account Id</label><span class="requ">*</span>
+            </td>
+            <td>
+                <select id="account_id" name="account_id">
+                    {% for acc_id in accountDetails %}
+                    <option vlaue="{{acc_id}}"></option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="account_type">Account Type</label><span class="requ">*</span>
+            </td>
+            <td>
+                <select id="account_type" name="account_type">
+                    <option vlaue="Savings"></option>
+                    <option vlaue="Current"></option>
+                </select>
+            </td>
+        </tr>
+
+    </table>
+    <span class="requ">(*) fileds are mandatory</span>
+    <br>
+    <div style="display: flex; flex-direction: row; justify-content: center; padding-top: 1rem;">
+        <input class="btn" type="submit" value="Delete Account">
+    </div>
+</form>
+
+{% endblock %}
