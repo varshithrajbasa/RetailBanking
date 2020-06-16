@@ -72,6 +72,13 @@ def update():
     cur.execute('''UPDATE  customer Set ws_age= %s ,ws_adrs= %s,ws_name= %s where ws_ssn= %s''',(c_age,address,cname,id))
     mysql.connection.commit()
     return redirect(url_for('users'))
+@app.route('/view_customer2')
+def users1():
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM customer")
+    if resultValue > 0:
+        userDetails = cur.fetchall()
+        return render_template('view_customer2.html',userDetails=userDetails)
 @app.route('/delete_customer',methods=['post', 'get'])
 def delete_customer():
     id=int(request.form.get('id'))
