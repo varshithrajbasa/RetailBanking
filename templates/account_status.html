@@ -1,0 +1,32 @@
+<!-- Page to dislay account status -->
+
+{% extends "layout.html" %} {% block content %}
+<h1>Account Status</h1>
+<table border=1>
+    <tr>
+        <th style="text-align:left">Customer ID</th>
+        <th style="text-align:left">Account ID</th>
+        <th style="text-align:left">Account Type</th>
+        <th style="text-align:left">Account Status</th>
+        <th style="text-align:left">Message</th>
+        <th style="text-align:left">Last Updated</th>
+        <th style="text-align:left">Operations</th>
+    </tr>
+    {% for user in accountDetails %}
+    <tr>
+        <td> {{user[0]}} </td>
+        <td> {{user[1]}} </td>
+        <td> {{user[2]}} </td>
+        <td> {{user[4]}} </td>
+        <td> {{user[5]}} </td>
+        <td> {{user[6]}} </td>
+        <td>
+            <form action="/refresh_account" method="post">
+                <input name="id" value="{{user[0]}}" type="hidden">
+                <button name="refresh" type="submit">Refresh</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
