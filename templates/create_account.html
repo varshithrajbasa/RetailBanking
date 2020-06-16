@@ -1,0 +1,45 @@
+{% extends "layout.html" %} {% block content %}
+
+<h1><b>Create Account</b></h1>
+<form method="POST" action="create_account">
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    <table>
+        <tr>
+            <td>
+                <label for="cust_id">Customer Id</label><span class="requ">*</span>
+            </td>
+            <td>
+                <input type="text" id="cust-id" name="cust-id" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="account_type">Account Type</label><span class="requ">*</span>
+            </td>
+            <td>
+                <select id="account_type" name="account_type">
+                    <option vlaue="Savings"></option>
+                    <option vlaue="Current"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="deposit_amount">Deposit Amount</label><span class="requ">*</span>
+            </td>
+            <td>
+                <input type="text" id="deposit_amount" name="deposit_amount" required>
+            </td>
+        </tr>
+    </table>
+    <span class="requ">(*) fileds are mandatory</span>
+    <br>
+    <div style="display: flex; flex-direction: row; justify-content: center; padding-top: 1rem;">
+        <input class="btn" type="submit" value="Submit">
+    </div>
+</form>
+
+{% endblock %}
