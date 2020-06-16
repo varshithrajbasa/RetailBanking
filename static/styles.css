@@ -4,15 +4,16 @@ body {
     margin: 0px;
     height: 100vh;
 }
+
 a {
     color: #020202;
     text-decoration: none;
 }
-a:hover 
-{
-     color:#00A0C6; 
-     text-decoration:none; 
-     cursor:pointer;  
+
+a:hover {
+    color: #00A0C6;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 footer {
@@ -112,7 +113,7 @@ footer>div {
     justify-content: flex-start;
     background: yellow;
     color: black;
-    /* padding: 1rem 2rem 1rem */
+    padding: 1rem 2rem 1rem
 }
 
 .create-customer>div>div>ul>li {
