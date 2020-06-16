@@ -179,6 +179,14 @@ input {
     border-radius: 4px;
 }
 
+#mydiv1 {
+    display: none;
+}
+
+#mydiv2 {
+    display: none;
+}
+
 .btn {
     width: 125px;
     color: yellow;
