@@ -72,3 +72,18 @@ def update():
     cur.execute('''UPDATE  customer Set ws_age= %s ,ws_adrs= %s,ws_name= %s where ws_ssn= %s''',(c_age,address,cname,id))
     mysql.connection.commit()
     return redirect(url_for('users'))
+@app.route('/delete_customer',methods=['post', 'get'])
+def delete_customer():
+    id=int(request.form.get('id'))
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("select * from customer where ws_ssn = %s",(id,))
+    if resultValue > 0:
+        userDetails = cur.fetchall()
+        return render_template('delete_customer.html',userDetails=userDetails)
+@app.route('/delete',methods=['post', 'get'])
+def delete():
+    id=int(request.form.get('id'))
+    cur = mysql.connection.cursor()
+    cur.execute('''delete from customer  where ws_ssn= %s''',(id,))
+    mysql.connection.commit()
+    return redirect(url_for('users'))
