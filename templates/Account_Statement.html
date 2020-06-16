@@ -1,0 +1,39 @@
+<!-- Page to account statement -->
+
+{% extends "layout.html" %} {% block content %}
+
+<h1>Account Statement</h1>
+<form method="POST" action="">
+    <div>Account ID:{{}}</div>
+    <input type="radio" onclick="showText(this)" id="last_txn" name="date_last_txn" value="last_txn">
+    <label for="last_txn">Last Number of Transactions</label>
+    <br>
+    <input type="radio" onclick="showText(this)" id="date" name="date_last_txn" value="date">
+    <label for="date">Start-End Date</label>
+    <div id="mydiv1">
+        <label for="txn">Number of Transactions</label>
+        <select name="txn" id="txn">
+        {%for x in range(1,table_length+1) %}
+        <option value="{{x}}">{{x}}</option>
+        {%end for%}
+        </select>
+    </div>
+    <div id="mydiv2">
+        <input type="date" name="startdate" placeholder="start date"> -
+        <input type="date" name="enddate" placeholder="end date">
+    </div>
+    <input class="btn" type="submit" value="Submit">
+</form>
+<script type="text/javascript">
+    function showText(obj) {
+        if (obj.value == 'date') {
+            document.getElementById('mydiv1').style.display = 'block';
+            document.getElementById('mydiv2').style.display = 'none';
+        } else {
+            document.getElementById('mydiv1').style.display = 'none';
+            document.getElementById('mydiv2').style.display = 'block';
+        }
+        return;
+    }
+</script>
+{% endblock %}
