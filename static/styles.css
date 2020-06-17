@@ -2,7 +2,7 @@ body {
     background: linear-gradient(to bottom, #b2beb5 -51%, #ffffff 61%);
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
-    height: 100vh;
+    min-height: 450px;
 }
 
 a {
@@ -33,6 +33,11 @@ footer>div {
     min-height: 450px;
     min-width: 700px;
     margin: 0 auto;
+    align-self: center;
+}
+
+h1 {
+    text-align: center;
 }
 
 
@@ -114,11 +119,11 @@ footer>div {
     justify-content: flex-start;
     background: yellow;
     color: black;
-    padding: 1rem 2rem 1rem
+    /* padding: 1rem 2rem 1rem */
 }
 
 .create-customer>div>div>ul>li {
-    padding-right: 2.5rem;
+    padding-right: 1rem;
     float: left;
     list-style: none;
     height: 1rem;
@@ -131,7 +136,7 @@ footer>div {
 }
 
 .create-customer>div>div>ul>li>ul>li {
-    padding: 1.5rem 0 1rem 0;
+    padding: 1.25rem 0 0.75rem 0;
     background-color: yellow;
     text-align: center;
     position: relative;
@@ -192,4 +197,20 @@ input {
     width: 125px;
     color: yellow;
     background: black;
+}
+
+form {
+    margin: auto;
+}
+
+.updatec>table {
+    margin: auto;
+}
+
+.intabdetail {
+    margin-left: 1rem;
+}
+
+td {
+    height: 2.5rem;
 }
