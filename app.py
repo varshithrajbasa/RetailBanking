@@ -102,7 +102,10 @@ def delete():
     mysql.connection.commit()
     return redirect(url_for('users'))
 
-#For accouts
+#For accounts
+@app.route('/create_a')
+def create_a():
+    return render_template('create_account.html')
 @app.route('/create_account', methods=['post', 'get'])
 def create_account():
     message=""
@@ -141,4 +144,39 @@ def delete_a():
         cur.execute('''delete from account where ws_acct_id= %s''',(account_id,))
         mysql.connection.commit()
     return redirect(url_for('delete_account'))
+#For Cashier
+@app.route('/account_details')
+def account_details():
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM account")
+    if resultValue > 0:
+        userDetails = cur.fetchall()
+        return render_template('account_holders.html',userDetails=userDetails)
+@app.route('/deposit_amount', methods=['post', 'get'])
+def deposit_amount():
+    id=request.form.get('id')
+    print(id)
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("select * from account where ws_cust_id = %s",(id,))
+    if resultValue > 0:
+        users = cur.fetchall()
+    return render_template('deposit_money.html',user=users)
+@app.route('/deposit',methods=['post','get'])
+def deposit():
+    message=""
+    id=int(request.form.get('id'))
+    amount=int(request.form.get('deposit'))
+    cur = mysql.connection.cursor()
+    cur.execute("update account set ws_acct_balance=ws_acct_balance+cast(%s as decimal(16,2)) where ws_cust_id= %s",(amount,id,))
+    mysql.connection.commit()
+    resultValue = cur.execute("select * from account where ws_cust_id = %s",(id,))
+    if resultValue > 0:
+        userDetails = cur.fetchall()
+        message="Amount deposited successfully"
+    today = date.today()
+    a_type=userDetails[0][2]
+    balance=int(request.form.get('deposit'))
+    cur.execute('''INSERT INTO `retailbanking`.`transactions` (`ws_cust_id` ,`ws_accnt_type` ,`ws_amt` ,`ws_trxn_date` ,`ws_src_typ` ,`ws_tgt_typ`)VALUES (%s, %s, %s, %s , %s , %s);''',(id,a_type,balance,today,a_type,a_type))
+    mysql.connection.commit()
+    return render_template('deposit_money.html',user=userDetails,message=message)
     
