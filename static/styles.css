@@ -31,7 +31,6 @@ footer>div {
 
 .content {
     min-height: 450px;
-    min-width: 700px;
     margin: 0 auto;
     align-self: center;
 }
@@ -113,7 +112,7 @@ h1 {
     color: blue;
 }
 
-.create-customer>div>div {
+.headercolor {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
