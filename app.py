@@ -8,6 +8,7 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'tiger'
 app.config['MYSQL_DB'] = 'retailbanking'
 mysql = MySQL(app)
+
 @app.route('/', methods=['post', 'get'])
 def login():
     message = ''
@@ -47,6 +48,7 @@ def create_customer():
         else:
             message = "Error"
     return render_template('create_customer.html',message=message)
+
 @app.route('/view_customer')
 def users():
     cur = mysql.connection.cursor()
@@ -54,6 +56,7 @@ def users():
     if resultValue > 0:
         userDetails = cur.fetchall()
         return render_template('view_customer.html',userDetails=userDetails)
+
 @app.route('/update_customer',methods=['post', 'get'])
 def update_customer():
     id=int(request.form.get('id'))
@@ -62,6 +65,7 @@ def update_customer():
     if resultValue > 0:
         userDetails = cur.fetchall()
         return render_template('update_customer.html',userDetails=userDetails)
+
 @app.route('/update',methods=['post', 'get'])
 def update():
     id=int(request.form.get('id'))
@@ -72,6 +76,7 @@ def update():
     cur.execute('''UPDATE  customer Set ws_age= %s ,ws_adrs= %s,ws_name= %s where ws_ssn= %s''',(c_age,address,cname,id))
     mysql.connection.commit()
     return redirect(url_for('users'))
+
 @app.route('/view_customer2')
 def users1():
     cur = mysql.connection.cursor()
@@ -79,6 +84,7 @@ def users1():
     if resultValue > 0:
         userDetails = cur.fetchall()
         return render_template('view_customer2.html',userDetails=userDetails)
+
 @app.route('/delete_customer',methods=['post', 'get'])
 def delete_customer():
     id=int(request.form.get('id'))
@@ -87,6 +93,7 @@ def delete_customer():
     if resultValue > 0:
         userDetails = cur.fetchall()
         return render_template('delete_customer.html',userDetails=userDetails)
+
 @app.route('/delete',methods=['post', 'get'])
 def delete():
     id=int(request.form.get('id'))
@@ -94,6 +101,7 @@ def delete():
     cur.execute('''delete from customer  where ws_ssn= %s''',(id,))
     mysql.connection.commit()
     return redirect(url_for('users'))
+
 #For accouts
 @app.route('/create_account', methods=['post', 'get'])
 def create_account():
@@ -112,6 +120,7 @@ def create_account():
         mysql.connection.commit()
         message="Account created"
     return render_template('create_account.html',message=message)
+
 @app.route('/delete_account')
 def delete_account():
     cur = mysql.connection.cursor()
@@ -119,6 +128,7 @@ def delete_account():
     if resultValue > 0:
         userDetails = cur.fetchall()
     return render_template('delete_account.html',accountDetails=userDetails)
+
 @app.route('/delete_a', methods=['post', 'get'])
 def delete_a():
     account_id=int(request.form.get('account_id'))
@@ -131,3 +141,4 @@ def delete_a():
         cur.execute('''delete from account where ws_acct_id= %s''',(account_id,))
         mysql.connection.commit()
     return redirect(url_for('delete_account'))
+    
