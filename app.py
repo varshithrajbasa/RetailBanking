@@ -147,6 +147,9 @@ def delete_a():
 #For Cashier
 @app.route('/account_details')
 def account_details():
+    return render_template('account_details.html')
+@app.route('/account_details')
+def account_details():
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM account")
     if resultValue > 0:
