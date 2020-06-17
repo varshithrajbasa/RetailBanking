@@ -1,0 +1,35 @@
+{% extends "layout2.html" %}
+   
+    {% block content %}
+    <h1><b>Select Customer</b></h1>
+    
+<table class="table table-bordered">
+  <thead class="thead-dark">
+  <tr>
+    <th style="text-align:left">CustomerID</th>
+    <th style="text-align:left">Account Id</th>
+    <th style="text-align:left">Account type</th>
+    <th style="text-align:left">Balance</th>
+    <th style="text-align:left">Account Create Date</th>
+    <th style="text-align:left">Last Transaction Date</th>
+    <th style="text-align:left">Deposit</th>
+  </thead>  
+  </tr>
+    {% for user in userDetails %}
+    <tr>
+      <td> {{user[0]}} </td>
+      <td> {{user[1]}} </td>
+      <td> {{user[2]}} </td>
+      <td> {{user[3]}} </td>
+      <td> {{user[4]}} </td>
+      <td> {{user[5]}} </td>
+      <td><form action="/deposit_amount" method="post">
+        <input name="id" value="{{user[0]}}" type="hidden">
+        <button name="update" type="submit">Deposit</button>
+    </form></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+     {% endblock %}
+  
