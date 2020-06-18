@@ -30,6 +30,9 @@ def login():
 
 @app.route('/create_customer', methods=['post', 'get'])
 def create_customer():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     message=""
     if request.method == 'POST':
         ssn_id=int(request.form.get('ssn-id'))
@@ -51,6 +54,9 @@ def create_customer():
 
 @app.route('/view_customer')
 def users():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM customer")
     if resultValue > 0:
@@ -59,6 +65,9 @@ def users():
 
 @app.route('/update_customer',methods=['post', 'get'])
 def update_customer():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     id=int(request.form.get('id'))
     cur = mysql.connection.cursor()
     resultValue = cur.execute("select * from customer where ws_ssn = %s",(id,))
@@ -68,6 +77,9 @@ def update_customer():
 
 @app.route('/update',methods=['post', 'get'])
 def update():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     id=int(request.form.get('id'))
     cname=request.form.get('cname')
     address=request.form.get('address')
@@ -79,6 +91,9 @@ def update():
 
 @app.route('/view_customer2')
 def users1():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM customer")
     if resultValue > 0:
@@ -87,6 +102,9 @@ def users1():
 
 @app.route('/delete_customer',methods=['post', 'get'])
 def delete_customer():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     id=int(request.form.get('id'))
     cur = mysql.connection.cursor()
     resultValue = cur.execute("select * from customer where ws_ssn = %s",(id,))
@@ -96,6 +114,9 @@ def delete_customer():
 
 @app.route('/delete',methods=['post', 'get'])
 def delete():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     id=int(request.form.get('id'))
     cur = mysql.connection.cursor()
     cur.execute('''delete from customer  where ws_ssn= %s''',(id,))
@@ -105,9 +126,15 @@ def delete():
 #For accounts
 @app.route('/create_a')
 def create_a():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     return render_template('create_account.html')
 @app.route('/create_account', methods=['post', 'get'])
 def create_account():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     message=""
     id=int(request.form.get('cust-id'))
     a_type=request.form.get('account_type')
@@ -126,6 +153,9 @@ def create_account():
 
 @app.route('/delete_account')
 def delete_account():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM account")
     if resultValue > 0:
@@ -134,6 +164,9 @@ def delete_account():
 
 @app.route('/delete_a', methods=['post', 'get'])
 def delete_a():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     account_id=int(request.form.get('account_id'))
     account_type=request.form.get('account_type')
     cur = mysql.connection.cursor()
@@ -147,9 +180,15 @@ def delete_a():
 #For Cashier
 @app.route('/account_details')
 def account_details():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     return render_template('account_details.html')
 @app.route('/account_details')
 def account_details():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM account")
     if resultValue > 0:
@@ -157,6 +196,9 @@ def account_details():
         return render_template('account_holders.html',userDetails=userDetails)
 @app.route('/deposit_amount', methods=['post', 'get'])
 def deposit_amount():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     id=request.form.get('id')
     print(id)
     cur = mysql.connection.cursor()
@@ -166,6 +208,9 @@ def deposit_amount():
     return render_template('deposit_money.html',user=users)
 @app.route('/deposit',methods=['post','get'])
 def deposit():
+    
+    if session=={}:
+        return redirect(url_for('login'))
     message=""
     id=int(request.form.get('id'))
     amount=int(request.form.get('deposit'))
@@ -182,4 +227,11 @@ def deposit():
     cur.execute('''INSERT INTO `retailbanking`.`transactions` (`ws_cust_id` ,`ws_accnt_type` ,`ws_amt` ,`ws_trxn_date` ,`ws_src_typ` ,`ws_tgt_typ`)VALUES (%s, %s, %s, %s , %s , %s);''',(id,a_type,balance,today,a_type,a_type))
     mysql.connection.commit()
     return render_template('deposit_money.html',user=userDetails,message=message)
+@app.route('/logout',methods=['post','get'])
+def logout():
+    if session=={}:
+        return redirect(url_for('login'))
+    session.pop('username', None)
+    print(session)
+    return redirect(url_for('login'))
     
