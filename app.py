@@ -278,4 +278,16 @@ def logout():
     session.pop('username', None)
     print(session)
     return redirect(url_for('login'))
-    
+#for  customer search
+@app.route('/csearch',methods=['post','get'])
+def csearch():
+    return render_template('customer_search.html')
+@app.route('/customersearch',methods=['post','get'])
+def customersearch():
+    cust_id=request.form.get('cust-id')
+    ssn_id=request.form.get('ssn-id')
+    cur = mysql.connection.cursor()
+    result=cur.execute('''select * from customer where ws_cust_id= %s or ws_ssn=%s''',(cust_id,ssn_id))
+    if result>0:
+        sample=cur.fetchall()
+        return render_template('customer_detail.html',sample=sample)   
