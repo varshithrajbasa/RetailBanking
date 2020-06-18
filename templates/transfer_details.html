@@ -1,0 +1,23 @@
+{% extends "layout2.html" %} 
+{% block content %}
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Amount Before transfer</th>
+        <th>Amount After transfer</th>
+    </tr>
+    <tr>
+        <td>{{trans[0][0]}}</td>
+        <td>{{trans[0][3]}}</td>
+        <td>{{trans_after}}</td>
+    </tr>
+    <tr>
+        <td>{{cust[0][0]}}</td>
+        <td>{{cust[0][3]}}</td>
+        <td>{{cust_after}}</td>
+    </tr>
+</table>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+{%endblock%}
