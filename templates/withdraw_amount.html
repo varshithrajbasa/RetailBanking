@@ -2,24 +2,25 @@
 
 {% extends "layout2.html" %} {% block content %}
 
-<h1>Deposit Money</h1>
-<form method="POST" action="">
+<h1>Withdraw Money</h1>
+<form method="POST" action="/withdraw">
     <table>
         <tr>
             <td>Customer ID:</td>
-            <td>{{}}</td>
+            <td>{{userDetails[0][0]}}</td>
+            <input name="id" value="{{userDetails[0][0]}}" type="hidden">
         </tr>
         <tr>
             <td>Account ID:</td>
-            <td>{{}}</td>
+            <td>{{userDetails[0][1]}}</td>
         </tr>
         <tr>
             <td>Account Type:</td>
-            <td>{{}}</td>
+            <td>{{userDetails[0][2]}}</td>
         </tr>
         <tr>
             <td>Balance:</td>
-            <td>{{}}</td>
+            <td>{{userDetails[0][3]}}</td>
         </tr>
         <tr>
             <td>Withdraw Amount:</td>
