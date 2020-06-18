@@ -3,22 +3,28 @@
 {% extends "layout2.html" %} {% block content %}
 
 <h1>Transfer Money</h1>
-<form method="POST" action="">
+<form method="POST" action="/transfer_amount">
     <table>
         <tr>
             <td>Customer ID:</td>
-            <td>{{}}</td>
+            <td><input type="text"name="cust-id"></td>
         </tr>
         <tr>
             <td>Source Account Type</td>
-            <td>{{}}</td>
+            <td><select id="account_type" name="account_type">
+                <option vlaue="Savings">S</option>
+                <option vlaue="Current">C</option>
+            </select></td>
         </tr>
         <tr>
-            <td>Target Account Type:</td>
-            <td>{{}}</td>
+            <td>Target Account Type</td>
+            <td><select id="account_type" name="account_type">
+                <option vlaue="Savings">S</option>
+                <option vlaue="Current">C</option>
+            </select></td>
         </tr>
         <tr>
-            <td>Transfer Amount:</td>
+            <td>Transfer Id</td>
             <td><input type="text" id="transfer" name="transfer" required></td>
         </tr>
     </table>
