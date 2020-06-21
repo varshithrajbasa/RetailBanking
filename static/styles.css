@@ -130,7 +130,7 @@ h1 {
 
 .create-customer>div>div>ul>li>ul {
     list-style: none;
-    padding: 0px;
+    padding: 0;
     display: none;
 }
 

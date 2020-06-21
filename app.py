@@ -177,6 +177,7 @@ def delete_a():
         cur.execute('''delete from account where ws_acct_id= %s''',(account_id,))
         mysql.connection.commit()
     return redirect(url_for('delete_account'))
+    
 #For Cashier
 @app.route('/account_details')
 def account_details():
@@ -184,6 +185,7 @@ def account_details():
     if session=={}:
         return redirect(url_for('login'))
     return render_template('account_details.html')
+
 @app.route('/account_details')
 def account_details():
     
@@ -194,9 +196,9 @@ def account_details():
     if resultValue > 0:
         userDetails = cur.fetchall()
         return render_template('account_holders.html',userDetails=userDetails)
+
 @app.route('/deposit_amount', methods=['post', 'get'])
 def deposit_amount():
-    
     if session=={}:
         return redirect(url_for('login'))
     id=request.form.get('id')
@@ -206,9 +208,9 @@ def deposit_amount():
     if resultValue > 0:
         users = cur.fetchall()
     return render_template('deposit_money.html',user=users)
+
 @app.route('/deposit',methods=['post','get'])
 def deposit():
-    
     if session=={}:
         return redirect(url_for('login'))
     message=""
@@ -227,6 +229,7 @@ def deposit():
     cur.execute('''INSERT INTO `retailbanking`.`transactions` (`ws_cust_id` ,`ws_accnt_type` ,`ws_amt` ,`ws_trxn_date` ,`ws_src_typ` ,`ws_tgt_typ`)VALUES (%s, %s, %s, %s , %s , %s);''',(id,a_type,balance,today,a_type,a_type))
     mysql.connection.commit()
     return render_template('deposit_money.html',user=userDetails,message=message)
+
 #for transfer
 @app.route("/transfer", methods=['post', 'get'])
 def transfer():
@@ -234,6 +237,7 @@ def transfer():
         return redirect(url_for('login'))
     return render_template("transfer_money.html")
 @app.route("/transfer_amount", methods=['post', 'get'])
+
 def transfer_amount():
     if session=={}:
         return redirect(url_for('login'))
@@ -264,12 +268,12 @@ def transfer_amount():
             mysql.connection.commit()
             message="Amount transfer completed successfully"
             return render_template('transfer_Details.html',message=message,cust=cust,trans=trans,cust_after=cust_after,trans_after=trans_after)
-
         else:
             message="Enter correct Target ID"
     else:
         message="Enter correct Customer ID"
     return render_template("transfer_money.html",message=message)
+
 #for logout
 @app.route('/logout',methods=['post','get'])
 def logout():
@@ -278,10 +282,12 @@ def logout():
     session.pop('username', None)
     print(session)
     return redirect(url_for('login'))
-#for  customer search
+
+#for customer search
 @app.route('/csearch',methods=['post','get'])
 def csearch():
     return render_template('customer_search.html')
+
 @app.route('/customersearch',methods=['post','get'])
 def customersearch():
     cust_id=request.form.get('cust-id')
